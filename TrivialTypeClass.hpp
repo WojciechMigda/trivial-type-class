@@ -29,19 +29,19 @@
 #include <type_traits>
 
 template<typename _Tp, unsigned long long _uniqId>
-class basic_type
+class TrivialType
 {
 public:
     typedef _Tp type;
     static_assert(std::is_trivial<_Tp>::value == true, "template argument must be a trivial type");
 
-    constexpr basic_type() = default;
-    constexpr basic_type(const type & value) : m_value(value){}
+    constexpr TrivialType() = default;
+    constexpr TrivialType(const type & value) : m_value(value){}
     operator type &(){return m_value;}
 private:
     type    m_value;
 };
 
-#define TRIVIAL_TYPE(type, name) typedef basic_type<type, (unsigned long long)(#name##_hash)> name
+#define TRIVIAL_TYPE(type, name) typedef TrivialType<type, (unsigned long long)(#name##_hash)> name
 
 #endif /* TRIVIALTYPECLASS_HPP_ */
