@@ -88,3 +88,14 @@ int main()
 
     return 0;
 }
+
+// conversions
+int fn(Foo & foo)
+{
+    return foo;
+}
+
+int cfn(const Foo & foo)
+{
+    return foo;
+}

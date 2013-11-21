@@ -38,6 +38,7 @@ public:
     constexpr TrivialType() = default;
     constexpr TrivialType(const type & value) : m_value(value){}
     operator type &(){return m_value;}
+    operator type const &() const {return m_value;}
 private:
     type    m_value;
 };
